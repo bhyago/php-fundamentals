@@ -34,6 +34,13 @@
             // "mais um projeto",
 
         ];
+
+        function verificarSeEstaFinalizado($p) {
+            if ($p['finalizado']) {
+                return '<span style="color: green;">✅ finalizado</span>';
+            }
+            return '<span style="color: green;">⛔ não finalizado</span>';
+        }
     ?>
     <h1><?= $titulo ?></h1>
     <p><?= $subtitulo ?></p>
@@ -53,11 +60,7 @@
                 <div>
                     <div><?= $projeto['data'] ?></div>
                     <div>Projeto:
-                        <?php if (!$projeto['finalizado']): ?>
-                            <span style="color: green;">⛔ não finalizado</span>
-                        <?php else: ?>
-                            <span style="color: green;">✅ finalizado</span>
-                        <?php endif; ?>
+                      <?php echo verificarSeEstaFinalizado($projeto); ?>
                         <!-- <?php
                             if ($projeto['finalizado']) {
                                 echo '✅ finalizado';
